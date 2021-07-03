@@ -29,6 +29,18 @@
       "name": "Thailand Association of the Blind",
       "image": "thailand-association-of-the-blind.jpg",
       "currency": "THB"
+    },
+    {
+      "id": 5,
+      "name": "Thailand Association of the Blind",
+      "image": "thailand-association-of-the-blind.jpg",
+      "currency": "THB"
+    },
+    {
+      "id": 5,
+      "name": "Thailand Association of the Blind",
+      "image": "thailand-association-of-the-blind.jpg",
+      "currency": "THB"
     }
   ],
   "payments": [

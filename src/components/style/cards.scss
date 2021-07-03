@@ -1,0 +1,94 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 76%;
+    margin: auto;
+    .card-box {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      width: 700px;
+      height: 450px;
+      margin: 7px;
+      border-radius: 5px;
+      &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        .card-body {
+          .button-container {
+            display: block;
+          }
+          img {
+            opacity: 0.2;
+          }
+        }
+        .card-button {
+          opacity: 0.3;
+        }
+      }
+      .card-body {
+        position: relative;
+        .button-container {
+          button {
+            cursor: pointer;
+            border: 1px solid BLUE;
+            color: blue;
+            border-radius: 2px;
+            background-color: white;
+          }
+          .select-buttons {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 15px;
+            label {
+              margin: 5px;
+            }
+            input {
+              cursor: pointer;
+            }
+          }
+  
+          .heading-text {
+            font-size: 18px;
+            font-weight: bold;
+          }
+          text-align: center;
+          display: none;
+          position: absolute;
+          top: 50%;
+          left: 33%;
+        }
+  
+        height: 80%;
+        width: 100%;
+        overflow: hidden;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .card-footer {
+        .card-button {
+          margin: auto;
+          margin-right: 48px;
+          button {
+            cursor: pointer;
+            padding: 5px;
+            padding-right: 12px;
+            padding-left: 12px;
+            border: 2px solid blue;
+            border-radius: 3px;
+            background: white;
+          }
+        }
+        display: flex;
+        justify-content: flex-end;
+        height: 20%;
+      }
+  
+      .close-button {
+        top: 5px;
+        right: 10px;
+        position: relative;
+        float: right;
+      }
+    }
+  }
+  

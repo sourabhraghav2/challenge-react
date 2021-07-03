@@ -1,3 +1,4 @@
+import { Charity } from "./models";
 import { Action } from "./types";
 
 export const chnageMessage = (message: string) => {
@@ -13,5 +14,13 @@ export const updateTotalDonation = (amount: number) => {
   return {
     type: "UPDATE_TOTAL_DONATE",
     amount: amount,
+  } as Action;
+};
+
+export const loadCharity = (charityList: Array<Charity>) => {
+  console.log("inside : loadCharity");
+  return {
+    type: "UPDATE_CHARITY_LIST",
+    charityList: charityList,
   } as Action;
 };
