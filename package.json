@@ -13,6 +13,7 @@
     "antd": "3.26.15",
     "autoprefixer": "9.6.1",
     "email-validator": "2.0.4",
+    "json-server": "^0.16.3",
     "node-sass": "4.14.1",
     "prompt": "1.0.0",
     "react": "^17.0.1",
@@ -39,7 +40,8 @@
     "checkformat": "prettier --check src/**/*.tsx src/**/*.ts",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server --watch db.json --port 3001"
   },
   "eslintConfig": {
     "extends": [
