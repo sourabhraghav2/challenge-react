@@ -3,6 +3,7 @@ import "antd/dist/antd.css";
 import "./style/cards.scss";
 
 import { Card } from "antd";
+import { useEffect, useState } from "react";
 const { Meta } = Card;
 
 interface Props {
@@ -11,16 +12,16 @@ interface Props {
   selectPaymentHandler;
 }
 
-var currentImage = 0;
-const getImageUrl = () => {
+
+const getImageUrl = (id:number) => {
   const availableImages = ["a", "b", "c", "d", "e"];
-  currentImage += 1;
-  return `./assets/images/{imageName}.jpg`.replace(
-    "{imageName}",
-    availableImages[currentImage % (availableImages.length - 1)]
+  return `./assets/images/{imageName}.jpg`.replace("{imageName}",
+    availableImages[id % (availableImages.length - 1)]
   );
 };
-export const Cards = (prop: Props) => {
+export const Cards = (prop: Props={charityList:[],selectPaymentHandler:()=>{},payAmountHandler:()=>{}}) => {
+  
+  const  [state,setState] =useState(prop);
   const payments = [10, 20, 50, 100, 500].map((amount, j) => (
     <label key={j}>
       <input
@@ -31,8 +32,13 @@ export const Cards = (prop: Props) => {
       {amount}
     </label>
   ));
-  
-  const cardTemplateList = prop.charityList.map((item: any, i: number) => {
+  useEffect(()=>{
+    setState(prop)
+  },[prop])
+  const closeCharity=(id:number)=>{
+      setState({...state,charityList:state.charityList.filter(e=>e.id!==id)})
+  }
+  const cardTemplateList = state.charityList.map((item: any, i: number) => {
     const payments = [10, 20, 50, 100, 500].map((amount, j) => (
       <label key={j}>
         <input
@@ -46,12 +52,13 @@ export const Cards = (prop: Props) => {
 
     return (
       <div key={i} className="card-box">
-        {/* <div className="close-button">X</div> */}
+         
         <div className="card-body">
           <div className="image-contaier">
-            <img src={getImageUrl()}></img>
+            <img src={getImageUrl(item.id)}></img>
           </div>
           <div className="button-container">
+            <div className="close-button" onClick={()=>{closeCharity(item.id)}}>X</div> 
             <div className="heading-text">Select the amount to donate (USD)</div>
             <div className="select-buttons">{payments}</div>
             <button>Pay</button>
@@ -65,5 +72,7 @@ export const Cards = (prop: Props) => {
       </div>
     );
   });
-  return <div className="card-container">{cardTemplateList}</div>;
+  return <div className="card-container">
+      {cardTemplateList}
+    </div>;
 };

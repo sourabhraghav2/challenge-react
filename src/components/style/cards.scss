@@ -4,10 +4,10 @@
     width: 76%;
     margin: auto;
     .card-box {
+      width: 600px;
+      height: 400px;
+      margin: 30px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      width: 700px;
-      height: 450px;
-      margin: 7px;
       border-radius: 5px;
       &:hover {
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -26,6 +26,7 @@
       .card-body {
         position: relative;
         .button-container {
+          
           button {
             cursor: pointer;
             border: 1px solid BLUE;
@@ -52,14 +53,15 @@
           text-align: center;
           display: none;
           position: absolute;
-          top: 50%;
-          left: 33%;
+          top: 40%;
+          left: 25%;
         }
   
         height: 80%;
         width: 100%;
         overflow: hidden;
         img {
+          border-radius: 5px;
           height: 100%;
           width: 100%;
         }
@@ -84,10 +86,11 @@
       }
   
       .close-button {
-        top: 5px;
-        right: 10px;
+        bottom: 125px;
+        left: 143px;
         position: relative;
         float: right;
+        cursor: pointer;
       }
     }
   }
