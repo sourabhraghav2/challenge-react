@@ -3,6 +3,7 @@ export interface Charity {
   name: string;
   image: string;
   currency: string;
+  donatedAmount: number;
 }
 
 export interface Payment {

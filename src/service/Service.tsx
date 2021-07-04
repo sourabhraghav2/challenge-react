@@ -10,7 +10,6 @@ export class Service {
         console.log("Error : ", e);
         return [];
       });
-    console.log("Response : ", res);
     return res;
   }
   async getPaymentListList(): Promise<Array<Payment>> {
@@ -20,7 +19,36 @@ export class Service {
         console.log("Error : ", e);
         return [];
       });
-    console.log("Response : ", res);
+    return res;
+  }
+  async performPayment(request: Payment): Promise<Payment> {
+    const res = await fetch("http://localhost:3001/payments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    })
+      .then((res) => (res.ok ? res.json() : (null)))
+      .catch((e) => {
+        console.log("Error : ", e);
+        return null;
+      });
+    return res;
+  }
+  async updateCharityAmount(request: Charity): Promise<Charity> {
+    const res = await fetch(`http://localhost:3001/charities/${request.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    })
+      .then((res) => (res.ok ? res.json() : (null)))
+      .catch((e) => {
+        console.log("Error : ", e);
+        return null;
+      });
     return res;
   }
 }

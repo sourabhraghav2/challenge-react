@@ -1,10 +1,25 @@
 
 .home{
-    .message {
-        color: gray;
-        color: 'red';
-        margin: '1em 0';
-        font-weight: bold;
-        font-Size: '16px';
+    width: 76%;
+    margin: auto;
+    
+    h1{
+        text-align: center;
+        margin: 20px;
+        margin-bottom: 0px;
+    }
+    .detail-container{
+        margin-left: 30px;
+        font-size: 12px;
+        div{
+            display: inline-block;
+        }
+    }
+    p{
+        margin:0px
+    }
+    h4{
+        display: inline-block;
     }
 }
+

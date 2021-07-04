@@ -1,78 +1,82 @@
 import { Charity } from "modules/models";
 import "antd/dist/antd.css";
 import "./style/cards.scss";
-
-import { Card } from "antd";
 import { useEffect, useState } from "react";
-const { Meta } = Card;
+import { AVAILABLE_PAYMENT_OPTIONS } from "common/constants";
 
-interface Props {
-  payAmountHandler;
+type Props = {
+  payAmountHandler: (item: Charity) => void;
   charityList: Array<Charity>;
-  selectPaymentHandler;
-}
-
-
-const getImageUrl = (id:number) => {
-  const availableImages = ["a", "b", "c", "d", "e"];
-  return `./assets/images/{imageName}.jpg`.replace("{imageName}",
-    availableImages[id % (availableImages.length - 1)]
-  );
+  selectPaymentHandler: (item: Charity, amount: number) => void;
 };
-export const Cards = (prop: Props={charityList:[],selectPaymentHandler:()=>{},payAmountHandler:()=>{}}) => {
-  
-  const  [state,setState] =useState(prop);
-  const payments = [10, 20, 50, 100, 500].map((amount, j) => (
-    <label key={j}>
-      <input
-        type="radio"
-        name="payment"
-        onClick={prop.selectPaymentHandler.bind(amount)}
-      />
-      {amount}
-    </label>
-  ));
-  useEffect(()=>{
-    setState(prop)
-  },[prop])
-  const closeCharity=(id:number)=>{
-      setState({...state,charityList:state.charityList.filter(e=>e.id!==id)})
+
+const getImageUrl = (imageName:string) => {
+  return `./assets/images/{imageName}`.replace("{imageName}",imageName);
+};
+
+export const Cards = (
+  prop: Props = {
+    charityList: [],
+    selectPaymentHandler: (item, amt) => {},
+    payAmountHandler: (item) => {},
   }
+) => {
+  const [state, setState] = useState(prop);
+  useEffect(() => {
+    setState(prop);
+  }, [prop]);
+  const closeCharity = (id: number) => {
+    setState({
+      ...state,
+      charityList: state.charityList.filter((e) => e.id !== id),
+    });
+  };
   const cardTemplateList = state.charityList.map((item: any, i: number) => {
-    const payments = [10, 20, 50, 100, 500].map((amount, j) => (
+    const payments = AVAILABLE_PAYMENT_OPTIONS.map((amount, j) => (
       <label key={j}>
         <input
           type="radio"
-          name="payment"
-          onClick={prop.selectPaymentHandler.bind(amount)}
+          name={"payment" + item.name}
+          onClick={() => prop.selectPaymentHandler(item, amount)}
         />
         {amount}
       </label>
     ));
-
     return (
-      <div key={i} className="card-box">
-         
+      <div key={i} className="card-container">
+        
         <div className="card-body">
           <div className="image-contaier">
-            <img src={getImageUrl(item.id)}></img>
+            <img alt="" src={ `./assets/images/${item.image}`}></img>
           </div>
           <div className="button-container">
-            <div className="close-button" onClick={()=>{closeCharity(item.id)}}>X</div> 
-            <div className="heading-text">Select the amount to donate (USD)</div>
+            <div
+              className="close-button"
+              onClick={() => {
+                closeCharity(item.id);
+              }}
+            >
+              X
+            </div>
+            <div className="heading-text">
+              Select the amount to donate ({item.currency})
+            </div>
             <div className="select-buttons">{payments}</div>
-            <button>Pay</button>
+            <button onClick={() => prop.payAmountHandler(item)}>Pay</button>
           </div>
         </div>
         <div className="card-footer">
+          <div className="card-name">{item.name}</div>
           <div className="card-button">
-            <button>Donate</button>
+            <div className="donated-amount">
+              <h5>
+                Donated :{(item.donatedAmount?item.donatedAmount:0)} {item.currency}
+              </h5>
+            </div>
           </div>
         </div>
       </div>
     );
   });
-  return <div className="card-container">
-      {cardTemplateList}
-    </div>;
+  return <div className="card-holder">{cardTemplateList}</div>;
 };

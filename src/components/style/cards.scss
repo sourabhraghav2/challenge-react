@@ -1,11 +1,10 @@
-.card-container {
+.card-holder {
     display: flex;
     flex-wrap: wrap;
-    width: 76%;
-    margin: auto;
-    .card-box {
-      width: 600px;
-      height: 400px;
+    
+    .card-container {
+      width: 400px;
+      height: 255px;
       margin: 30px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       border-radius: 5px;
@@ -26,7 +25,12 @@
       .card-body {
         position: relative;
         .button-container {
-          
+          width: 281px;
+          text-align: center;
+          display: none;
+          position: absolute;
+          top: 50px;
+          left: 60px;
           button {
             cursor: pointer;
             border: 1px solid BLUE;
@@ -35,26 +39,25 @@
             background-color: white;
           }
           .select-buttons {
-            font-size: 16px;
+            font-size: 10px;
             font-weight: bold;
             padding: 15px;
             label {
               margin: 5px;
+              font-size: 11px;
             }
             input {
               cursor: pointer;
+              height:8px;
             }
+          
           }
   
           .heading-text {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
           }
-          text-align: center;
-          display: none;
-          position: absolute;
-          top: 40%;
-          left: 25%;
+          
         }
   
         height: 80%;
@@ -67,27 +70,42 @@
         }
       }
       .card-footer {
+        .card-name{
+          padding: 16px;
+          font-size: 10px;
+          font-weight: bold;
+
+        }
         .card-button {
           margin: auto;
-          margin-right: 48px;
-          button {
-            cursor: pointer;
+          margin-right: 20px;
+          .donated-amount {
+            
             padding: 5px;
+            cursor: pointer;
             padding-right: 12px;
             padding-left: 12px;
             border: 2px solid blue;
             border-radius: 3px;
             background: white;
+            h5{
+              margin: 0px;
+            }
           }
         }
         display: flex;
         justify-content: flex-end;
         height: 20%;
+        width:100%;
       }
   
       .close-button {
-        bottom: 125px;
-        left: 143px;
+        border: 0px solid blue;
+        border-radius: 5px;
+        padding: 3px;
+        background: #f1eaea;
+        bottom: 42px;
+        left: 50px;
         position: relative;
         float: right;
         cursor: pointer;

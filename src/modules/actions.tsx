@@ -1,7 +1,8 @@
+import React from "react";
 import { Charity } from "./models";
 import { Action } from "./types";
 
-export const chnageMessage = (message: string) => {
+export const chnageMessage = (message: string | React.ReactElement) => {
   console.log("inside : chnageMessage");
   return {
     type: "UPDATE_MESSAGE",

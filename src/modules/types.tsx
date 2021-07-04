@@ -11,6 +11,6 @@ export type Store = {
 };
 export type StoreState = {
   donate: number;
-  message: string;
+  message: string | React.ReactElement;
   charityList: Array<Charity>;
 };
